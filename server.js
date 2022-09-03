@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const asyncHandler = require('express-async-handler');
 const User = require('./model/Users');
 
 const port = process.env.PORT || 5000;
