@@ -27,7 +27,7 @@ const Works = () => {
           Things I am good at
         </p>
 
-        <div className='py-8 w-full grid md:grid-cols-8 grid-cols-4 gap-6 justify-items-center'>
+        <div className='md:py-8 pt-8 w-full grid md:grid-cols-8 grid-cols-4 gap-6 justify-items-center'>
           {logos.map((element, index) => (
             <div className='flex flex-col items-center' key={index}>
               <img alt='' src={element[0]} className='w-10 h-10' />
