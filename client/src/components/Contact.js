@@ -9,6 +9,8 @@ const Contact = () => {
     message: '',
   });
 
+  const [contactBtnState, setContactBtnState] = useState(false);
+
   const { name, email, subject, message } = userdata;
 
   const onChange = (e) => {
@@ -18,6 +20,7 @@ const Contact = () => {
   const formSubmission = async (event) => {
     event.preventDefault();
     try {
+      setContactBtnState(true);
       await axios.post('/api/contact', userdata);
       setUserdata({
         name: '',
@@ -25,6 +28,7 @@ const Contact = () => {
         subject: '',
         message: '',
       });
+      setContactBtnState(false);
     } catch (err) {}
   };
 
@@ -99,7 +103,12 @@ const Contact = () => {
               required
             ></textarea>
             <div className='w-40 flex items-center justify-between px-3 py-3 bg-rose-600 hover:bg-rose-500 rounded-md cursor-pointer'>
-              <input type='submit' value='Send Message' className='cursor-pointer' />
+              <input
+                type='submit'
+                value='Send Message'
+                className='cursor-pointer'
+                disabled={contactBtnState}
+              />
               <i className='fa-solid fa-location-arrow rotate-45'></i>
             </div>
           </div>
