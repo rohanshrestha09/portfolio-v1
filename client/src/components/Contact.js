@@ -20,7 +20,6 @@ const Contact = () => {
   const formSubmission = async (event) => {
     event.preventDefault();
     try {
-      setContactBtnState(true);
       await axios.post('/api/contact', userdata);
       setUserdata({
         name: '',
@@ -61,7 +60,10 @@ const Contact = () => {
         </div>
         <form
           className='flex flex-col w-full h-3/5 lg:h-full lg:w-[47%] justify-evenly lg:justify-between lg:py-6'
-          onSubmit={formSubmission}
+          onSubmit={(e) => {
+            setContactBtnState(true);
+            formSubmission(e);
+          }}
         >
           <p className='text-lg lg:text-2xl'>Message Me</p>
           <div className='grid grid-cols-2 gap-4 grid-rows-auto w-full'>
